@@ -3,6 +3,18 @@ import { prisma } from '../lib/prisma';
 async function main() {
   console.log('🌱 Seeding database...');
 
+  // Clear existing data
+  console.log('🧹 Clearing existing data...');
+  await prisma.knowledgeRelationship.deleteMany({});
+  await prisma.knowledgeTag.deleteMany({});
+  await prisma.knowledgeCountry.deleteMany({});
+  await prisma.knowledgeCategory.deleteMany({});
+  await prisma.knowledgeEntry.deleteMany({});
+  await prisma.tag.deleteMany({});
+  await prisma.country.deleteMany({});
+  await prisma.category.deleteMany({});
+  console.log('✅ Cleared existing data');
+
   // Categories
   const categories = await Promise.all([
     prisma.category.upsert({
