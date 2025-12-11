@@ -1,0 +1,130 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// Môn học (Toán, Lý, Hóa, Sinh, Triết, Lịch sử, Địa lý,...)
+model Category {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  description String?
+  color       String?  // HEX color code
+  icon        String?  // Emoji hoặc icon name
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  knowledgeCategories KnowledgeCategory[]
+
+  @@map("categories")
+}
+
+// Quốc gia
+model Country {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  code        String?  // ISO country code
+  region      String?  // Châu Á, Châu Âu, etc.
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  knowledgeCountries KnowledgeCountry[]
+
+  @@map("countries")
+}
+
+// Tags
+model Tag {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  createdAt DateTime @default(now())
+
+  knowledgeTags KnowledgeTag[]
+
+  @@map("tags")
+}
+
+// Kiến thức chính
+model KnowledgeEntry {
+  id              String   @id @default(uuid())
+  title           String
+  description     String?  @db.Text
+  content         String?  @db.Text
+  year            Int      // Năm (có thể âm cho BC)
+  month           Int?     // Tháng 1-12
+  day             Int?     // Ngày 1-31
+  isBc            Boolean  @default(false) // Trước hay sau Công Nguyên
+  approximateDate Boolean  @default(false) // Ngày tháng có chính xác không
+  importanceLevel Int      @default(3) // 1-5
+  source          String?  @db.Text // Nguồn tham khảo
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  categories      KnowledgeCategory[]
+  countries       KnowledgeCountry[]
+  tags            KnowledgeTag[]
+  relationshipsFrom KnowledgeRelationship[] @relation("SourceRelationship")
+  relationshipsTo   KnowledgeRelationship[] @relation("TargetRelationship")
+
+  @@map("knowledge_entries")
+  @@index([year, isBc])
+  @@index([title])
+}
+
+// Many-to-many: Knowledge & Categories
+model KnowledgeCategory {
+  knowledgeId String
+  categoryId  String
+  isPrimary   Boolean @default(false) // Môn học chính
+
+  knowledge KnowledgeEntry @relation(fields: [knowledgeId], references: [id], onDelete: Cascade)
+  category  Category       @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@id([knowledgeId, categoryId])
+  @@map("knowledge_categories")
+}
+
+// Many-to-many: Knowledge & Countries
+model KnowledgeCountry {
+  knowledgeId String
+  countryId   String
+  isPrimary   Boolean @default(false) // Quốc gia chính
+
+  knowledge KnowledgeEntry @relation(fields: [knowledgeId], references: [id], onDelete: Cascade)
+  country   Country        @relation(fields: [countryId], references: [id], onDelete: Cascade)
+
+  @@id([knowledgeId, countryId])
+  @@map("knowledge_countries")
+}
+
+// Many-to-many: Knowledge & Tags
+model KnowledgeTag {
+  knowledgeId String
+  tagId       String
+
+  knowledge KnowledgeEntry @relation(fields: [knowledgeId], references: [id], onDelete: Cascade)
+  tag       Tag            @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([knowledgeId, tagId])
+  @@map("knowledge_tags")
+}
+
+// Mối quan hệ giữa các kiến thức
+model KnowledgeRelationship {
+  id               String   @id @default(uuid())
+  sourceId         String
+  targetId         String
+  relationshipType String   // 'influences', 'builds_upon', 'contradicts', 'related_to'
+  description      String?  @db.Text
+  createdAt        DateTime @default(now())
+
+  source KnowledgeEntry @relation("SourceRelationship", fields: [sourceId], references: [id], onDelete: Cascade)
+  target KnowledgeEntry @relation("TargetRelationship", fields: [targetId], references: [id], onDelete: Cascade)
+
+  @@map("knowledge_relationships")
+  @@index([sourceId])
+  @@index([targetId])
+}
