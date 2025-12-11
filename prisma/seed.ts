@@ -881,6 +881,194 @@ async function main() {
     }
   });
 
+  // ============ HISTORY KNOWLEDGE ============
+
+  const mesopotamia = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Nền văn minh Lưỡng Hà',
+      description: 'Nền văn minh đầu tiên của nhân loại',
+      content: 'Nền văn minh Lưỡng Hà (Mesopotamia) nảy sinh giữa sông Tigris và Euphrates. Phát minh chữ viết hình nêm, bánh xe, luật Hammurabi. Đây là cái nôi của nền văn minh phương Tây.',
+      year: 3500,
+      isBc: true,
+      approximateDate: true,
+      importanceLevel: 5,
+      source: 'Archaeological evidence',
+      categories: {
+        create: [{ categoryId: categories[5].id, isPrimary: true }]
+      },
+      countries: {
+        create: []
+      }
+    }
+  });
+
+  const greatWall = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Xây dựng Vạn Lý Trường Thành',
+      description: 'Công trình kiến trúc vĩ đại nhất thế giới',
+      content: 'Tần Thủy Hoàng ra lệnh nối các đoạn tường thành thành một công trình phòng thủ liên tục dài hàng nghìn km. Vạn Lý Trường Thành trở thành biểu tượng của Trung Quốc.',
+      year: 221,
+      isBc: true,
+      approximateDate: true,
+      importanceLevel: 5,
+      source: 'Chinese Historical Records',
+      categories: {
+        create: [{ categoryId: categories[5].id, isPrimary: true }]
+      },
+      countries: {
+        create: [{ countryId: countries[1].id, isPrimary: true }]
+      }
+    }
+  });
+
+  const romanEmpire = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Đế chế La Mã',
+      description: 'Đế chế hùng mạnh nhất thế giới cổ đại',
+      content: 'Đế chế La Mã thống trị vùng Địa Trung Hải, châu Âu và Trung Đông trong hơn 500 năm. Hệ thống luật La Mã, kiến trúc, và tiếng Latin ảnh hưởng sâu rộng đến văn minh phương Tây.',
+      year: 27,
+      isBc: true,
+      approximateDate: true,
+      importanceLevel: 5,
+      source: 'Roman Historical Records',
+      categories: {
+        create: [{ categoryId: categories[5].id, isPrimary: true }]
+      },
+      countries: {
+        create: []
+      }
+    }
+  });
+
+  const islamicGoldenAge = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Thời kỳ Hoàng kim Hồi giáo',
+      description: 'Trung tâm khoa học và văn hóa thế giới',
+      content: 'Từ thế kỷ 8-13, thế giới Hồi giáo trở thành trung tâm tri thức với những tiến bộ vượt bậc về toán học, thiên văn, y học, hóa học. Nhà Trí tuệ ở Baghdad lưu giữ và phát triển tri thức cổ đại.',
+      year: 750,
+      isBc: false,
+      approximateDate: true,
+      importanceLevel: 5,
+      source: 'Islamic Historical Records',
+      categories: {
+        create: [{ categoryId: categories[5].id, isPrimary: true }]
+      },
+      countries: {
+        create: []
+      }
+    }
+  });
+
+  const renaissance = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Thời kỳ Phục Hưng',
+      description: 'Sự bùng nổ nghệ thuật và khoa học châu Âu',
+      content: 'Phong trào Phục Hưng (Renaissance) bắt đầu từ Italy, đánh dấu sự chuyển từ thời Trung Cổ sang Hiện đại. Leonardo da Vinci, Michelangelo, Galileo - nghệ thuật và khoa học đạt đỉnh cao.',
+      year: 1400,
+      isBc: false,
+      approximateDate: true,
+      importanceLevel: 5,
+      source: 'European Historical Records',
+      categories: {
+        create: [{ categoryId: categories[5].id, isPrimary: true }]
+      },
+      countries: {
+        create: []
+      }
+    }
+  });
+
+  const americanRevolution = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Cách mạng Mỹ',
+      description: 'Độc lập của Hợp chủng quốc Hoa Kỳ',
+      content: 'Tuyên ngôn Độc lập (1776) tuyên bố "tất cả mọi người sinh ra đều bình đẳng" và quyền tự do, hạnh phúc. Hoa Kỳ trở thành nền dân chủ đầu tiên hiện đại, ảnh hưởng đến các cuộc cách mạng sau này.',
+      year: 1776,
+      isBc: false,
+      importanceLevel: 5,
+      source: 'Declaration of Independence',
+      categories: {
+        create: [{ categoryId: categories[5].id, isPrimary: true }]
+      },
+      countries: {
+        create: []
+      }
+    }
+  });
+
+  const frenchRevolution = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Cách mạng Pháp',
+      description: 'Lật đổ chế độ quân chủ, thiết lập dân chủ',
+      content: 'Cách mạng Pháp (1789) lật đổ chế độ quân chủ tuyệt đối, tuyên bố "Tự do, Bình đẳng, Bác ái". Tuyên ngôn Nhân quyền và Dân quyền đặt nền móng cho nhân quyền hiện đại.',
+      year: 1789,
+      isBc: false,
+      importanceLevel: 5,
+      source: 'Declaration of the Rights of Man',
+      categories: {
+        create: [{ categoryId: categories[5].id, isPrimary: true }]
+      },
+      countries: {
+        create: []
+      }
+    }
+  });
+
+  const industrialRevolution = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Cách mạng Công nghiệp',
+      description: 'Chuyển đổi từ nông nghiệp sang công nghiệp',
+      content: 'Cách mạng Công nghiệp bắt đầu ở Anh với máy hơi nước, nhà máy dệt, đường sắt. Thay đổi căn bản cách con người sống và làm việc, tạo ra xã hội hiện đại.',
+      year: 1760,
+      isBc: false,
+      approximateDate: true,
+      importanceLevel: 5,
+      source: 'Economic History',
+      categories: {
+        create: [{ categoryId: categories[5].id, isPrimary: true }]
+      },
+      countries: {
+        create: [{ countryId: countries[3].id, isPrimary: true }]
+      }
+    }
+  });
+
+  const worldWarII = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Chiến tranh Thế giới thứ II',
+      description: 'Cuộc chiến lớn nhất lịch sử nhân loại',
+      content: 'CTTG II (1939-1945) là cuộc xung đột toàn cầu giữa Đồng minh và Trục, gây ra 70-85 triệu người chết. Kết thúc bằng bom nguyên tử ở Hiroshima và Nagasaki. Định hình trật tự thế giới hiện đại.',
+      year: 1939,
+      isBc: false,
+      importanceLevel: 5,
+      source: 'Historical Records',
+      categories: {
+        create: [{ categoryId: categories[5].id, isPrimary: true }]
+      },
+      countries: {
+        create: []
+      }
+    }
+  });
+
+  const internetRevolution = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Cách mạng Internet',
+      description: 'World Wide Web và kỷ nguyên thông tin',
+      content: 'Tim Berners-Lee phát minh World Wide Web (1989). Internet thay đổi căn bản cách con người giao tiếp, làm việc, học tập. Mở ra kỷ nguyên số hóa và toàn cầu hóa thông tin.',
+      year: 1989,
+      isBc: false,
+      importanceLevel: 5,
+      source: 'CERN - Tim Berners-Lee',
+      categories: {
+        create: [{ categoryId: categories[5].id, isPrimary: true }]
+      },
+      countries: {
+        create: []
+      }
+    }
+  });
+
   // ============ PHILOSOPHY KNOWLEDGE ============
 
   const socrates = await prisma.knowledgeEntry.create({
@@ -1378,11 +1566,75 @@ async function main() {
     }
   });
 
+  // History Relationships
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: islamicGoldenAge.id,
+      targetId: algebra.id,
+      relationshipType: 'influences',
+      description: 'Thời kỳ Hoàng kim Hồi giáo là bối cảnh phát triển của Đại số'
+    }
+  });
+
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: renaissance.id,
+      targetId: islamicGoldenAge.id,
+      relationshipType: 'builds_upon',
+      description: 'Phục Hưng kế thừa tri thức từ thế giới Hồi giáo'
+    }
+  });
+
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: renaissance.id,
+      targetId: galileoMotion.id,
+      relationshipType: 'influences',
+      description: 'Thời kỳ Phục Hưng tạo điều kiện cho cách mạng khoa học của Galileo'
+    }
+  });
+
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: americanRevolution.id,
+      targetId: frenchRevolution.id,
+      relationshipType: 'influences',
+      description: 'Cách mạng Mỹ truyền cảm hứng cho Cách mạng Pháp'
+    }
+  });
+
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: industrialRevolution.id,
+      targetId: thermodynamics.id,
+      relationshipType: 'related_to',
+      description: 'Cách mạng Công nghiệp thúc đẩy nghiên cứu nhiệt động lực học'
+    }
+  });
+
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: worldWarII.id,
+      targetId: nuclearFission.id,
+      relationshipType: 'related_to',
+      description: 'Phân hạch hạt nhân dẫn đến bom nguyên tử trong CTTG II'
+    }
+  });
+
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: internetRevolution.id,
+      targetId: humanGenome.id,
+      relationshipType: 'influences',
+      description: 'Internet tạo điều kiện hợp tác toàn cầu cho Dự án bộ gen người'
+    }
+  });
+
   console.log('✅ Seeding completed!');
   console.log(`Created ${categories.length} categories`);
   console.log(`Created ${countries.length} countries`);
-  console.log(`Created 54 knowledge entries (14 Math + 10 Physics + 10 Chemistry + 10 Biology + 10 Philosophy)`);
-  console.log(`Created 34 relationships`);
+  console.log(`Created 64 knowledge entries (14 Math + 10 Physics + 10 Chemistry + 10 Biology + 10 History + 10 Philosophy)`);
+  console.log(`Created 41 relationships`);
 }
 
 main()
