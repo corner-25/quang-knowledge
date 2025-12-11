@@ -327,6 +327,746 @@ async function main() {
     }
   });
 
+  // ============ PHYSICS KNOWLEDGE ============
+
+  const archimedesPrinciple = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Nguyên lý Archimedes',
+      description: 'Định luật về lực đẩy trong chất lỏng',
+      content: 'Vật nhúng trong chất lỏng chịu lực đẩy hướng lên bằng trọng lượng phần chất lỏng mà vật chiếm chỗ. Archimedes phát hiện điều này khi ngâm mình trong bồn tắm và hét lên "Eureka!"',
+      year: 250,
+      isBc: true,
+      approximateDate: true,
+      importanceLevel: 5,
+      source: 'Archimedes',
+      categories: {
+        create: [{ categoryId: categories[1].id, isPrimary: true }]
+      },
+      countries: {
+        create: [{ countryId: countries[0].id, isPrimary: true }]
+      }
+    }
+  });
+
+  const galileoMotion = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Định luật rơi tự do của Galileo',
+      description: 'Mọi vật rơi với gia tốc như nhau',
+      content: 'Galileo Galilei chứng minh rằng trong chân không, mọi vật thể rơi với cùng gia tốc, không phụ thuộc vào khối lượng. Ông thách thức quan điểm của Aristotle kéo dài 2000 năm.',
+      year: 1589,
+      isBc: false,
+      approximateDate: true,
+      importanceLevel: 5,
+      source: 'Galileo Galilei',
+      categories: {
+        create: [{ categoryId: categories[1].id, isPrimary: true }]
+      },
+      countries: {
+        create: []
+      }
+    }
+  });
+
+  const newtonLaws = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Ba định luật Newton về chuyển động',
+      description: 'Nền tảng của cơ học cổ điển',
+      content: '1) Định luật quán tính 2) F = ma 3) Lực và phản lực. Isaac Newton công bố trong "Principia Mathematica" (1687) - tác phẩm khoa học vĩ đại nhất mọi thời đại.',
+      year: 1687,
+      isBc: false,
+      importanceLevel: 5,
+      source: 'Newton - Principia Mathematica',
+      categories: {
+        create: [{ categoryId: categories[1].id, isPrimary: true }]
+      },
+      countries: {
+        create: [{ countryId: countries[3].id, isPrimary: true }]
+      }
+    }
+  });
+
+  const thermodynamics = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Định luật nhiệt động lực học',
+      description: 'Năng lượng và entropy',
+      content: 'Các định luật nhiệt động: 1) Năng lượng được bảo toàn 2) Entropy luôn tăng trong hệ cô lập 3) Entropy = 0 tại nhiệt độ tuyệt đối. Phát triển bởi Carnot, Clausius, Kelvin.',
+      year: 1850,
+      isBc: false,
+      approximateDate: true,
+      importanceLevel: 5,
+      source: 'Carnot, Clausius, Kelvin',
+      categories: {
+        create: [{ categoryId: categories[1].id, isPrimary: true }]
+      },
+      countries: {
+        create: []
+      }
+    }
+  });
+
+  const maxwell = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Phương trình Maxwell về điện từ',
+      description: 'Thống nhất điện và từ trường',
+      content: 'James Clerk Maxwell phát triển 4 phương trình mô tả điện trường, từ trường và mối quan hệ giữa chúng. Dự đoán ánh sáng là sóng điện từ. Đây là nền tảng của vật lý hiện đại.',
+      year: 1865,
+      isBc: false,
+      importanceLevel: 5,
+      source: 'Maxwell - A Dynamical Theory of the Electromagnetic Field',
+      categories: {
+        create: [{ categoryId: categories[1].id, isPrimary: true }]
+      },
+      countries: {
+        create: [{ countryId: countries[3].id, isPrimary: true }]
+      }
+    }
+  });
+
+  const relativityGeneral = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Thuyết tương đối rộng',
+      description: 'Trọng lực là độ cong của không-thời gian',
+      content: 'Einstein mô tả trọng lực không phải là lực mà là hiện tượng uốn cong của không-thời gian do khối lượng gây ra. Dự đoán sóng hấp dẫn, lỗ đen, giãn nở vũ trụ.',
+      year: 1915,
+      isBc: false,
+      importanceLevel: 5,
+      source: 'Einstein - General Relativity',
+      categories: {
+        create: [{ categoryId: categories[1].id, isPrimary: true }]
+      },
+      countries: {
+        create: [{ countryId: countries[4].id, isPrimary: true }]
+      }
+    }
+  });
+
+  const quantumMechanics = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Cơ học lượng tử',
+      description: 'Vật lý ở tầm vi mô',
+      content: 'Heisenberg, Schrödinger, Bohr phát triển cơ học lượng tử - mô tả hành vi của hạt ở cấp độ nguyên tử. Bao gồm nguyên lý bất định, hàm sóng, superpositon.',
+      year: 1925,
+      isBc: false,
+      approximateDate: true,
+      importanceLevel: 5,
+      source: 'Heisenberg, Schrödinger, Bohr',
+      categories: {
+        create: [{ categoryId: categories[1].id, isPrimary: true }]
+      },
+      countries: {
+        create: [{ countryId: countries[4].id, isPrimary: true }]
+      }
+    }
+  });
+
+  const nuclearFission = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Phản ứng phân hạch hạt nhân',
+      description: 'Otto Hahn và Lise Meitner phát hiện phân hạch',
+      content: 'Phát hiện uranium có thể bị phân tách thành các hạt nhân nhỏ hơn, giải phóng năng lượng khổng lồ. Dẫn đến phát triển năng lượng hạt nhân và bom nguyên tử.',
+      year: 1938,
+      isBc: false,
+      importanceLevel: 5,
+      source: 'Hahn & Meitner',
+      categories: {
+        create: [{ categoryId: categories[1].id, isPrimary: true }]
+      },
+      countries: {
+        create: [{ countryId: countries[4].id, isPrimary: true }]
+      }
+    }
+  });
+
+  const standardModel = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Mô hình chuẩn của vật lý hạt',
+      description: 'Lý thuyết thống nhất các hạt cơ bản',
+      content: 'Mô hình chuẩn mô tả 3 trong 4 lực cơ bản (điện từ, yếu, mạnh) và các hạt cơ bản: quark, lepton, boson. Được xác nhận bởi phát hiện Higgs boson (2012).',
+      year: 1975,
+      isBc: false,
+      approximateDate: true,
+      importanceLevel: 5,
+      source: 'Glashow, Salam, Weinberg',
+      categories: {
+        create: [{ categoryId: categories[1].id, isPrimary: true }]
+      },
+      countries: {
+        create: []
+      }
+    }
+  });
+
+  const gravitationalWaves = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Phát hiện sóng hấp dẫn',
+      description: 'LIGO xác nhận dự đoán của Einstein',
+      content: 'Sau 100 năm Einstein dự đoán, LIGO lần đầu tiên phát hiện trực tiếp sóng hấp dẫn từ 2 lỗ đen va chạm, mở ra kỷ nguyên thiên văn học sóng hấp dẫn.',
+      year: 2015,
+      isBc: false,
+      importanceLevel: 5,
+      source: 'LIGO Scientific Collaboration',
+      categories: {
+        create: [{ categoryId: categories[1].id, isPrimary: true }]
+      },
+      countries: {
+        create: []
+      }
+    }
+  });
+
+  // ============ CHEMISTRY KNOWLEDGE ============
+
+  const atomism = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Thuyết nguyên tử của Democritus',
+      description: 'Vật chất cấu tạo từ các hạt không thể phân chia',
+      content: 'Democritus đề xuất rằng mọi vật chất được tạo thành từ các hạt nhỏ không thể chia cắt gọi là "atomos" (nguyên tử). Mặc dù không có bằng chứng thực nghiệm, đây là tiền đề của hóa học hiện đại.',
+      year: 400,
+      isBc: true,
+      approximateDate: true,
+      importanceLevel: 4,
+      source: 'Democritus',
+      categories: {
+        create: [{ categoryId: categories[2].id, isPrimary: true }, { categoryId: categories[4].id, isPrimary: false }]
+      },
+      countries: {
+        create: [{ countryId: countries[0].id, isPrimary: true }]
+      }
+    }
+  });
+
+  const conservationMass = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Định luật bảo toàn khối lượng',
+      description: 'Lavoisier - Cha đẻ của hóa học hiện đại',
+      content: 'Antoine Lavoisier chứng minh khối lượng được bảo toàn trong phản ứng hóa học. Ông đặt tên oxygen, hydrogen và loại bỏ thuyết phlogiston sai lầm.',
+      year: 1789,
+      isBc: false,
+      importanceLevel: 5,
+      source: 'Lavoisier - Traité Élémentaire de Chimie',
+      categories: {
+        create: [{ categoryId: categories[2].id, isPrimary: true }]
+      },
+      countries: {
+        create: []
+      }
+    }
+  });
+
+  const daltonAtomic = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Thuyết nguyên tử Dalton',
+      description: 'Nền tảng khoa học của hóa học',
+      content: 'John Dalton đề xuất: 1) Nguyên tử là đơn vị nhỏ nhất không thể chia 2) Nguyên tử cùng nguyên tố giống nhau 3) Phản ứng hóa học là sắp xếp lại nguyên tử.',
+      year: 1808,
+      isBc: false,
+      importanceLevel: 5,
+      source: 'Dalton - A New System of Chemical Philosophy',
+      categories: {
+        create: [{ categoryId: categories[2].id, isPrimary: true }]
+      },
+      countries: {
+        create: [{ countryId: countries[3].id, isPrimary: true }]
+      }
+    }
+  });
+
+  const periodicTable = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Bảng tuần hoàn Mendeleev',
+      description: 'Sắp xếp các nguyên tố hóa học',
+      content: 'Dmitri Mendeleev tạo bảng tuần hoàn dựa trên khối lượng nguyên tử và tính chất hóa học. Ông dự đoán chính xác các nguyên tố chưa được phát hiện như gallium, germanium.',
+      year: 1869,
+      isBc: false,
+      importanceLevel: 5,
+      source: 'Mendeleev',
+      categories: {
+        create: [{ categoryId: categories[2].id, isPrimary: true }]
+      },
+      countries: {
+        create: []
+      }
+    }
+  });
+
+  const electron = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Phát hiện electron',
+      description: 'J.J. Thomson và tia cathode',
+      content: 'J.J. Thomson phát hiện electron qua thí nghiệm tia cathode, chứng minh nguyên tử có cấu trúc bên trong và không phải là đơn vị không thể chia như Dalton nghĩ.',
+      year: 1897,
+      isBc: false,
+      importanceLevel: 5,
+      source: 'J.J. Thomson',
+      categories: {
+        create: [{ categoryId: categories[2].id, isPrimary: true }, { categoryId: categories[1].id, isPrimary: false }]
+      },
+      countries: {
+        create: [{ countryId: countries[3].id, isPrimary: true }]
+      }
+    }
+  });
+
+  const nuclearModel = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Mô hình nguyên tử hạt nhân',
+      description: 'Rutherford phát hiện hạt nhân nguyên tử',
+      content: 'Ernest Rutherford bắn hạt alpha vào lá vàng mỏng, phát hiện nguyên tử có hạt nhân nhỏ, đặc, mang điện dương ở trung tâm với electron quay xung quanh.',
+      year: 1911,
+      isBc: false,
+      importanceLevel: 5,
+      source: 'Rutherford',
+      categories: {
+        create: [{ categoryId: categories[2].id, isPrimary: true }, { categoryId: categories[1].id, isPrimary: false }]
+      },
+      countries: {
+        create: [{ countryId: countries[3].id, isPrimary: true }]
+      }
+    }
+  });
+
+  const chemicalBond = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Lý thuyết liên kết hóa học',
+      description: 'Lewis và liên kết cộng hóa trị',
+      content: 'Gilbert Lewis giới thiệu khái niệm cặp electron dùng chung trong liên kết cộng hóa trị, và quy tắc octet. Giải thích tại sao các nguyên tử kết hợp với nhau.',
+      year: 1916,
+      isBc: false,
+      importanceLevel: 5,
+      source: 'Gilbert Lewis',
+      categories: {
+        create: [{ categoryId: categories[2].id, isPrimary: true }]
+      },
+      countries: {
+        create: []
+      }
+    }
+  });
+
+  const penicillin = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Phát hiện Penicillin',
+      description: 'Kháng sinh đầu tiên - Alexander Fleming',
+      content: 'Alexander Fleming tình cờ phát hiện nấm Penicillium tiêu diệt vi khuẩn. Penicillin cứu sống hàng triệu người, mở đầu kỷ nguyên kháng sinh.',
+      year: 1928,
+      isBc: false,
+      importanceLevel: 5,
+      source: 'Fleming',
+      categories: {
+        create: [{ categoryId: categories[2].id, isPrimary: true }, { categoryId: categories[3].id, isPrimary: false }]
+      },
+      countries: {
+        create: [{ countryId: countries[3].id, isPrimary: true }]
+      }
+    }
+  });
+
+  const dnaStructure = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Cấu trúc DNA xoắn kép',
+      description: 'Watson, Crick và bí mật sự sống',
+      content: 'James Watson và Francis Crick khám phá cấu trúc xoắn kép của DNA dựa trên dữ liệu nhiễu xạ tia X của Rosalind Franklin. Giải thích cơ chế di truyền ở cấp phân tử.',
+      year: 1953,
+      isBc: false,
+      importanceLevel: 5,
+      source: 'Watson & Crick',
+      categories: {
+        create: [{ categoryId: categories[2].id, isPrimary: true }, { categoryId: categories[3].id, isPrimary: true }]
+      },
+      countries: {
+        create: [{ countryId: countries[3].id, isPrimary: true }]
+      }
+    }
+  });
+
+  const crispr = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'CRISPR - Chỉnh sửa gen',
+      description: 'Công nghệ cách mạng hóa sinh học',
+      content: 'Jennifer Doudna và Emmanuelle Charpentier phát triển CRISPR-Cas9 - công cụ chỉnh sửa gen chính xác, rẻ và dễ dùng. Mở ra khả năng chữa bệnh di truyền, cải thiện cây trồng.',
+      year: 2012,
+      isBc: false,
+      importanceLevel: 5,
+      source: 'Doudna & Charpentier',
+      categories: {
+        create: [{ categoryId: categories[2].id, isPrimary: true }, { categoryId: categories[3].id, isPrimary: true }]
+      },
+      countries: {
+        create: []
+      }
+    }
+  });
+
+  // ============ BIOLOGY KNOWLEDGE ============
+
+  const cellTheory = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Thuyết tế bào',
+      description: 'Tế bào là đơn vị cơ bản của sự sống',
+      content: 'Schleiden và Schwann đề xuất: 1) Mọi sinh vật được tạo từ tế bào 2) Tế bào là đơn vị cơ bản về cấu trúc và chức năng 3) Tế bào mới sinh ra từ tế bào có sẵn (Virchow bổ sung).',
+      year: 1839,
+      isBc: false,
+      importanceLevel: 5,
+      source: 'Schleiden, Schwann, Virchow',
+      categories: {
+        create: [{ categoryId: categories[3].id, isPrimary: true }]
+      },
+      countries: {
+        create: [{ countryId: countries[4].id, isPrimary: true }]
+      }
+    }
+  });
+
+  const evolution = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Thuyết tiến hóa của Darwin',
+      description: 'Chọn lọc tự nhiên và nguồn gốc loài',
+      content: 'Charles Darwin đề xuất thuyết tiến hóa qua chọn lọc tự nhiên: sinh vật có đặc điểm thích nghi tốt sống sót và sinh sản nhiều hơn. Giải thích sự đa dạng sinh học trên Trái Đất.',
+      year: 1859,
+      isBc: false,
+      importanceLevel: 5,
+      source: 'Darwin - On the Origin of Species',
+      categories: {
+        create: [{ categoryId: categories[3].id, isPrimary: true }]
+      },
+      countries: {
+        create: [{ countryId: countries[3].id, isPrimary: true }]
+      }
+    }
+  });
+
+  const mendelGenetics = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Di truyền học Mendel',
+      description: 'Định luật di truyền cơ bản',
+      content: 'Gregor Mendel thí nghiệm với đậu Hà Lan, phát hiện các định luật di truyền: phân ly, phân ly độc lập. Đặt nền móng cho di truyền học hiện đại.',
+      year: 1866,
+      isBc: false,
+      importanceLevel: 5,
+      source: 'Mendel - Experiments on Plant Hybridization',
+      categories: {
+        create: [{ categoryId: categories[3].id, isPrimary: true }]
+      },
+      countries: {
+        create: []
+      }
+    }
+  });
+
+  const germ = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Thuyết vi trùng gây bệnh',
+      description: 'Pasteur và Koch chứng minh vi khuẩn gây bệnh',
+      content: 'Louis Pasteur và Robert Koch chứng minh vi sinh vật gây ra bệnh tật. Pasteur phát triển phương pháp tiệt trùng (pasteurization). Koch xác định nguyên nhân lao, tả, than.',
+      year: 1870,
+      isBc: false,
+      approximateDate: true,
+      importanceLevel: 5,
+      source: 'Pasteur & Koch',
+      categories: {
+        create: [{ categoryId: categories[3].id, isPrimary: true }]
+      },
+      countries: {
+        create: []
+      }
+    }
+  });
+
+  const photosynthesis = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Cơ chế quang hợp',
+      description: 'Cây xanh chuyển ánh sáng thành năng lượng hóa học',
+      content: 'Các nhà khoa học phát hiện quang hợp: 6CO₂ + 6H₂O + ánh sáng → C₆H₁₂O₆ + 6O₂. Cây sử dụng chlorophyll để chuyển năng lượng mặt trời thành glucose, tạo oxygen.',
+      year: 1905,
+      isBc: false,
+      approximateDate: true,
+      importanceLevel: 5,
+      source: 'Multiple Scientists',
+      categories: {
+        create: [{ categoryId: categories[3].id, isPrimary: true }, { categoryId: categories[2].id, isPrimary: false }]
+      },
+      countries: {
+        create: []
+      }
+    }
+  });
+
+  const insulin = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Phát hiện Insulin',
+      description: 'Banting & Best cứu sống bệnh nhân tiểu đường',
+      content: 'Frederick Banting và Charles Best chiết xuất insulin từ tụy, điều trị thành công bệnh tiểu đường type 1. Trước đó, bệnh này là án tử hình.',
+      year: 1921,
+      isBc: false,
+      importanceLevel: 5,
+      source: 'Banting & Best',
+      categories: {
+        create: [{ categoryId: categories[3].id, isPrimary: true }, { categoryId: categories[2].id, isPrimary: false }]
+      },
+      countries: {
+        create: []
+      }
+    }
+  });
+
+  const centralDogma = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Định đề trung tâm sinh học phân tử',
+      description: 'Luồng thông tin di truyền DNA → RNA → Protein',
+      content: 'Francis Crick đề xuất định đề trung tâm: thông tin di truyền chuyển từ DNA sang RNA (transcription), rồi từ RNA sang protein (translation). Đây là nguyên lý cơ bản của sinh học phân tử.',
+      year: 1958,
+      isBc: false,
+      importanceLevel: 5,
+      source: 'Francis Crick',
+      categories: {
+        create: [{ categoryId: categories[3].id, isPrimary: true }, { categoryId: categories[2].id, isPrimary: false }]
+      },
+      countries: {
+        create: [{ countryId: countries[3].id, isPrimary: true }]
+      }
+    }
+  });
+
+  const pcr = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'PCR - Khuếch đại DNA',
+      description: 'Kary Mullis và công nghệ PCR',
+      content: 'Kary Mullis phát minh PCR (Polymerase Chain Reaction) - kỹ thuật nhân bản DNA nhanh chóng. Cách mạng hóa nghiên cứu gen, pháp y, chẩn đoán bệnh.',
+      year: 1983,
+      isBc: false,
+      importanceLevel: 5,
+      source: 'Kary Mullis',
+      categories: {
+        create: [{ categoryId: categories[3].id, isPrimary: true }, { categoryId: categories[2].id, isPrimary: false }]
+      },
+      countries: {
+        create: []
+      }
+    }
+  });
+
+  const humanGenome = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Dự án bộ gen người hoàn thành',
+      description: 'Giải mã toàn bộ DNA con người',
+      content: 'Dự án bộ gen người (Human Genome Project) giải trình tự ~3 tỷ cặp bazơ trong DNA người. Mở ra kỷ nguyên y học cá nhân hóa, hiểu về bệnh tật và tiến hóa.',
+      year: 2003,
+      isBc: false,
+      importanceLevel: 5,
+      source: 'Human Genome Project',
+      categories: {
+        create: [{ categoryId: categories[3].id, isPrimary: true }, { categoryId: categories[2].id, isPrimary: false }]
+      },
+      countries: {
+        create: []
+      }
+    }
+  });
+
+  const immunotherapy = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Liệu pháp miễn dịch ung thư',
+      description: 'Khai thác hệ miễn dịch để chống ung thư',
+      content: 'James Allison và Tasuku Honjo phát triển liệu pháp ức chế điểm kiểm soát miễn dịch, giúp hệ miễn dịch tấn công tế bào ung thư. Cách mạng hóa điều trị ung thư.',
+      year: 2018,
+      isBc: false,
+      importanceLevel: 5,
+      source: 'Allison & Honjo - Nobel Prize 2018',
+      categories: {
+        create: [{ categoryId: categories[3].id, isPrimary: true }]
+      },
+      countries: {
+        create: []
+      }
+    }
+  });
+
+  // ============ PHILOSOPHY KNOWLEDGE ============
+
+  const socrates = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Triết học Socrates',
+      description: 'Phương pháp vấn đáp và "Biết mình không biết"',
+      content: 'Socrates đặt nền móng cho triết học phương Tây với phương pháp vấn đáp (Socratic method). Ông dạy rằng "Một cuộc đời không được xem xét kỹ là không đáng sống" và khẳng định "Tôi chỉ biết rằng tôi không biết gì".',
+      year: 399,
+      isBc: true,
+      approximateDate: true,
+      importanceLevel: 5,
+      source: 'Plato - Dialogues',
+      categories: {
+        create: [{ categoryId: categories[4].id, isPrimary: true }]
+      },
+      countries: {
+        create: [{ countryId: countries[0].id, isPrimary: true }]
+      }
+    }
+  });
+
+  const plato = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Thuyết Lý tưởng của Plato',
+      description: 'Thế giới ý niệm và hang động',
+      content: 'Plato đề xuất thế giới được chia làm hai: thế giới vật chất (bóng tối) và thế giới lý tưởng (ánh sáng). Ngụ ngôn hang động minh họa con người bị giam cầm trong vô minh, chỉ thấy bóng của thực tại.',
+      year: 380,
+      isBc: true,
+      approximateDate: true,
+      importanceLevel: 5,
+      source: 'Plato - The Republic',
+      categories: {
+        create: [{ categoryId: categories[4].id, isPrimary: true }]
+      },
+      countries: {
+        create: [{ countryId: countries[0].id, isPrimary: true }]
+      }
+    }
+  });
+
+  const aristotle = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Logic học Aristotle',
+      description: 'Nền tảng của logic hình thức',
+      content: 'Aristotle phát triển logic hình thức đầu tiên với tam đoạn luận. Ông cũng đề xuất 4 nguyên nhân: nguyên nhân chất liệu, hình thức, tác động và mục đích. Ảnh hưởng sâu rộng đến khoa học.',
+      year: 350,
+      isBc: true,
+      approximateDate: true,
+      importanceLevel: 5,
+      source: 'Aristotle - Organon',
+      categories: {
+        create: [{ categoryId: categories[4].id, isPrimary: true }]
+      },
+      countries: {
+        create: [{ countryId: countries[0].id, isPrimary: true }]
+      }
+    }
+  });
+
+  const descartes = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Chủ nghĩa duy lý Descartes',
+      description: 'Tôi tư duy, vậy tôi tồn tại',
+      content: 'René Descartes đặt nền móng triết học hiện đại với "Cogito ergo sum" (Tôi tư duy, vậy tôi tồn tại). Ông phân đôi tâm-thân, cho rằng lý trí là nguồn gốc của tri thức.',
+      year: 1637,
+      isBc: false,
+      importanceLevel: 5,
+      source: 'Descartes - Discourse on Method',
+      categories: {
+        create: [{ categoryId: categories[4].id, isPrimary: true }]
+      },
+      countries: {
+        create: []
+      }
+    }
+  });
+
+  const kant = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Triết học phê phán Kant',
+      description: 'Cách mạng Copernicus trong triết học',
+      content: 'Immanuel Kant tổng hợp chủ nghĩa duy lý và kinh nghiệm luận. Ông cho rằng tri thức phát sinh từ cả kinh nghiệm lẫn cấu trúc tiên nghiệm của tâm trí. "Hai điều khiến tôi kinh ngạc: bầu trời đầy sao trên đầu và luật đạo đức trong lòng".',
+      year: 1781,
+      isBc: false,
+      importanceLevel: 5,
+      source: 'Kant - Critique of Pure Reason',
+      categories: {
+        create: [{ categoryId: categories[4].id, isPrimary: true }]
+      },
+      countries: {
+        create: [{ countryId: countries[4].id, isPrimary: true }]
+      }
+    }
+  });
+
+  const hegel = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Biện chứng Hegel',
+      description: 'Luận đề - Phản đề - Hợp đề',
+      content: 'Georg Hegel phát triển phép biện chứng: mỗi ý tưởng (luận đề) tạo ra mâu thuẫn (phản đề), dẫn đến sự tổng hợp cao hơn (hợp đề). Lịch sử là quá trình Tinh thần Tuyệt đối tự nhận thức.',
+      year: 1807,
+      isBc: false,
+      importanceLevel: 5,
+      source: 'Hegel - Phenomenology of Spirit',
+      categories: {
+        create: [{ categoryId: categories[4].id, isPrimary: true }]
+      },
+      countries: {
+        create: [{ countryId: countries[4].id, isPrimary: true }]
+      }
+    }
+  });
+
+  const marx = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Chủ nghĩa Mác',
+      description: 'Duy vật biện chứng và đấu tranh giai cấp',
+      content: 'Karl Marx đảo ngược Hegel, cho rằng điều kiện vật chất quyết định ý thức. Lịch sử là đấu tranh giai cấp, tư bản chủ nghĩa sẽ tự sụp đổ và dẫn đến chủ nghĩa cộng sản.',
+      year: 1848,
+      isBc: false,
+      importanceLevel: 5,
+      source: 'Marx & Engels - The Communist Manifesto',
+      categories: {
+        create: [{ categoryId: categories[4].id, isPrimary: true }, { categoryId: categories[5].id, isPrimary: false }]
+      },
+      countries: {
+        create: [{ countryId: countries[4].id, isPrimary: true }]
+      }
+    }
+  });
+
+  const nietzsche = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Siêu nhân Nietzsche',
+      description: 'Thần đã chết và Ý chí quyền lực',
+      content: 'Friedrich Nietzsche tuyên bố "Thần đã chết" - các giá trị truyền thống sụp đổ. Ông đề xuất "siêu nhân" (Übermensch) tự tạo ra giá trị của mình, sống theo "ý chí quyền lực" thay vì đạo đức đàn bầy.',
+      year: 1883,
+      isBc: false,
+      importanceLevel: 5,
+      source: 'Nietzsche - Thus Spoke Zarathustra',
+      categories: {
+        create: [{ categoryId: categories[4].id, isPrimary: true }]
+      },
+      countries: {
+        create: [{ countryId: countries[4].id, isPrimary: true }]
+      }
+    }
+  });
+
+  const existentialism = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Chủ nghĩa hiện sinh Sartre',
+      description: 'Tồn tại đi trước bản chất',
+      content: 'Jean-Paul Sartre khẳng định con người không có bản chất định sẵn - "tồn tại đi trước bản chất". Chúng ta bị "kết án tự do", phải tự tạo ra ý nghĩa cuộc đời và chịu trách nhiệm tuyệt đối.',
+      year: 1943,
+      isBc: false,
+      importanceLevel: 5,
+      source: 'Sartre - Being and Nothingness',
+      categories: {
+        create: [{ categoryId: categories[4].id, isPrimary: true }]
+      },
+      countries: {
+        create: []
+      }
+    }
+  });
+
+  const postmodernism = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Hậu hiện đại',
+      description: 'Nghi ngờ các siêu tường thuật',
+      content: 'Triết học hậu hiện đại (Lyotard, Derrida, Foucault) nghi ngờ các "siêu tường thuật" lớn (tôn giáo, khoa học, tiến bộ). Không có chân lý tuyệt đối, chỉ có các góc nhìn và diễn giải khác nhau.',
+      year: 1979,
+      isBc: false,
+      approximateDate: true,
+      importanceLevel: 4,
+      source: 'Lyotard - The Postmodern Condition',
+      categories: {
+        create: [{ categoryId: categories[4].id, isPrimary: true }]
+      },
+      countries: {
+        create: []
+      }
+    }
+  });
+
   // Relationships
   await prisma.knowledgeRelationship.create({
     data: {
@@ -373,10 +1113,276 @@ async function main() {
     }
   });
 
+  // Physics Relationships
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: newtonLaws.id,
+      targetId: galileoMotion.id,
+      relationshipType: 'builds_upon',
+      description: 'Định luật Newton phát triển từ nghiên cứu của Galileo về chuyển động'
+    }
+  });
+
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: relativityGeneral.id,
+      targetId: newtonLaws.id,
+      relationshipType: 'builds_upon',
+      description: 'Thuyết tương đối rộng mở rộng và điều chỉnh định luật Newton về trọng lực'
+    }
+  });
+
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: quantumMechanics.id,
+      targetId: newton.id,
+      relationshipType: 'contradicts',
+      description: 'Cơ học lượng tử thay thế cơ học Newton ở cấp độ vi mô'
+    }
+  });
+
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: maxwell.id,
+      targetId: einstein.id,
+      relationshipType: 'influences',
+      description: 'Phương trình Maxwell là cơ sở cho Einstein phát triển thuyết tương đối hẹp'
+    }
+  });
+
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: gravitationalWaves.id,
+      targetId: relativityGeneral.id,
+      relationshipType: 'builds_upon',
+      description: 'Phát hiện sóng hấp dẫn xác nhận dự đoán của thuyết tương đối rộng'
+    }
+  });
+
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: standardModel.id,
+      targetId: quantumMechanics.id,
+      relationshipType: 'builds_upon',
+      description: 'Mô hình chuẩn được xây dựng trên nền tảng cơ học lượng tử'
+    }
+  });
+
+  // Chemistry Relationships
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: daltonAtomic.id,
+      targetId: atomism.id,
+      relationshipType: 'builds_upon',
+      description: 'Thuyết nguyên tử Dalton phát triển từ ý tưởng của Democritus với bằng chứng khoa học'
+    }
+  });
+
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: daltonAtomic.id,
+      targetId: conservationMass.id,
+      relationshipType: 'builds_upon',
+      description: 'Thuyết nguyên tử giải thích định luật bảo toàn khối lượng'
+    }
+  });
+
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: periodicTable.id,
+      targetId: daltonAtomic.id,
+      relationshipType: 'builds_upon',
+      description: 'Bảng tuần hoàn tổ chức các nguyên tố dựa trên thuyết nguyên tử'
+    }
+  });
+
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: electron.id,
+      targetId: daltonAtomic.id,
+      relationshipType: 'contradicts',
+      description: 'Phát hiện electron chứng minh nguyên tử không phải là đơn vị không thể chia'
+    }
+  });
+
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: nuclearModel.id,
+      targetId: electron.id,
+      relationshipType: 'builds_upon',
+      description: 'Mô hình hạt nhân mở rộng khám phá về cấu trúc nguyên tử sau khi phát hiện electron'
+    }
+  });
+
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: chemicalBond.id,
+      targetId: electron.id,
+      relationshipType: 'builds_upon',
+      description: 'Lý thuyết liên kết hóa học dựa trên sự tương tác của electron'
+    }
+  });
+
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: dnaStructure.id,
+      targetId: chemicalBond.id,
+      relationshipType: 'builds_upon',
+      description: 'Cấu trúc DNA được giải thích qua các liên kết hóa học giữa các bazơ nitơ'
+    }
+  });
+
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: crispr.id,
+      targetId: dnaStructure.id,
+      relationshipType: 'builds_upon',
+      description: 'CRISPR chỉnh sửa gen dựa trên hiểu biết về cấu trúc DNA'
+    }
+  });
+
+  // Biology Relationships
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: evolution.id,
+      targetId: cellTheory.id,
+      relationshipType: 'builds_upon',
+      description: 'Thuyết tiến hóa giải thích sự phát triển đa dạng của các tế bào và sinh vật'
+    }
+  });
+
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: mendelGenetics.id,
+      targetId: evolution.id,
+      relationshipType: 'related_to',
+      description: 'Di truyền học Mendel cung cấp cơ chế cho thuyết tiến hóa'
+    }
+  });
+
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: penicillin.id,
+      targetId: germ.id,
+      relationshipType: 'builds_upon',
+      description: 'Penicillin phát triển từ hiểu biết về vi trùng gây bệnh'
+    }
+  });
+
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: centralDogma.id,
+      targetId: dnaStructure.id,
+      relationshipType: 'builds_upon',
+      description: 'Định đề trung tâm mô tả luồng thông tin từ DNA'
+    }
+  });
+
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: centralDogma.id,
+      targetId: mendelGenetics.id,
+      relationshipType: 'builds_upon',
+      description: 'Định đề trung tâm giải thích cơ chế phân tử của di truyền Mendel'
+    }
+  });
+
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: pcr.id,
+      targetId: dnaStructure.id,
+      relationshipType: 'builds_upon',
+      description: 'PCR sử dụng kiến thức về cấu trúc DNA để nhân bản'
+    }
+  });
+
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: humanGenome.id,
+      targetId: pcr.id,
+      relationshipType: 'builds_upon',
+      description: 'Dự án bộ gen người sử dụng PCR để giải trình tự DNA'
+    }
+  });
+
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: humanGenome.id,
+      targetId: dnaStructure.id,
+      relationshipType: 'builds_upon',
+      description: 'Giải mã bộ gen dựa trên hiểu biết về cấu trúc DNA'
+    }
+  });
+
+  // Philosophy Relationships
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: plato.id,
+      targetId: socrates.id,
+      relationshipType: 'builds_upon',
+      description: 'Plato là học trò của Socrates và phát triển triết học của thầy'
+    }
+  });
+
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: aristotle.id,
+      targetId: plato.id,
+      relationshipType: 'contradicts',
+      description: 'Aristotle bác bỏ thuyết Lý tưởng của Plato, ủng hộ kinh nghiệm luận'
+    }
+  });
+
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: descartes.id,
+      targetId: aristotle.id,
+      relationshipType: 'related_to',
+      description: 'Descartes đánh dấu sự chuyển từ triết học cổ đại sang hiện đại'
+    }
+  });
+
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: hegel.id,
+      targetId: kant.id,
+      relationshipType: 'builds_upon',
+      description: 'Hegel phát triển triết học Kant với phép biện chứng'
+    }
+  });
+
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: marx.id,
+      targetId: hegel.id,
+      relationshipType: 'builds_upon',
+      description: 'Marx đảo ngược biện chứng Hegel từ duy tâm sang duy vật'
+    }
+  });
+
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: existentialism.id,
+      targetId: nietzsche.id,
+      relationshipType: 'builds_upon',
+      description: 'Chủ nghĩa hiện sinh phát triển từ ý tưởng của Nietzsche về tự do và giá trị'
+    }
+  });
+
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: postmodernism.id,
+      targetId: nietzsche.id,
+      relationshipType: 'builds_upon',
+      description: 'Hậu hiện đại kế thừa quan điểm phê phán của Nietzsche về chân lý'
+    }
+  });
+
   console.log('✅ Seeding completed!');
   console.log(`Created ${categories.length} categories`);
   console.log(`Created ${countries.length} countries`);
-  console.log(`Created 14 knowledge entries with relationships`);
+  console.log(`Created 54 knowledge entries (14 Math + 10 Physics + 10 Chemistry + 10 Biology + 10 Philosophy)`);
+  console.log(`Created 34 relationships`);
 }
 
 main()
