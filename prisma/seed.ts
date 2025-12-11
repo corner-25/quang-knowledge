@@ -1069,6 +1069,191 @@ async function main() {
     }
   });
 
+  // ============ GEOGRAPHY KNOWLEDGE ============
+
+  const earthShape = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Trái Đất hình cầu',
+      description: 'Eratosthenes đo chu vi Trái Đất',
+      content: 'Eratosthenes (276-194 BC) là người đầu tiên tính toán chu vi Trái Đất với độ chính xác đáng kinh ngạc bằng cách đo bóng của cột ở hai địa điểm khác nhau. Chứng minh Trái Đất hình cầu.',
+      year: 240,
+      isBc: true,
+      approximateDate: true,
+      importanceLevel: 5,
+      source: 'Eratosthenes',
+      categories: {
+        create: [{ categoryId: categories[6].id, isPrimary: true }, { categoryId: categories[0].id, isPrimary: false }]
+      },
+      countries: {
+        create: [{ countryId: countries[0].id, isPrimary: true }]
+      }
+    }
+  });
+
+  const silkRoad = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Con đường tơ lụa',
+      description: 'Mạng lưới thương mại xuyên Á-Âu',
+      content: 'Con đường tơ lụa là mạng lưới tuyến đường thương mại kết nối phương Đông và phương Tây, từ Trung Quốc đến Địa Trung Hải. Không chỉ trao đổi hàng hóa mà còn văn hóa, tôn giáo, công nghệ.',
+      year: 130,
+      isBc: true,
+      approximateDate: true,
+      importanceLevel: 5,
+      source: 'Historical Trade Routes',
+      categories: {
+        create: [{ categoryId: categories[6].id, isPrimary: true }, { categoryId: categories[5].id, isPrimary: false }]
+      },
+      countries: {
+        create: [{ countryId: countries[1].id, isPrimary: true }]
+      }
+    }
+  });
+
+  const colombusAmerica = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Columbus khám phá châu Mỹ',
+      description: 'Kết nối Tân - Cựu thế giới',
+      content: 'Christopher Columbus đặt chân đến châu Mỹ (1492), mở đầu kỷ nguyên khám phá địa lý. Thay đổi hoàn toàn bản đồ thế giới và lịch sử nhân loại với "Columbian Exchange" - trao đổi sinh vật, văn hóa giữa hai bên Đại Tây Dương.',
+      year: 1492,
+      isBc: false,
+      importanceLevel: 5,
+      source: 'Historical Records',
+      categories: {
+        create: [{ categoryId: categories[6].id, isPrimary: true }, { categoryId: categories[5].id, isPrimary: false }]
+      },
+      countries: {
+        create: []
+      }
+    }
+  });
+
+  const magellanCircumnavigation = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Vòng quanh thế giới của Magellan',
+      description: 'Chứng minh Trái Đất hình cầu bằng thực nghiệm',
+      content: 'Ferdinand Magellan và đoàn thám hiểm (1519-1522) là những người đầu tiên đi vòng quanh Trái Đất, chứng minh thực tế rằng Trái Đất là hình cầu và các đại dương liên kết với nhau.',
+      year: 1522,
+      isBc: false,
+      importanceLevel: 5,
+      source: 'Historical Expedition Records',
+      categories: {
+        create: [{ categoryId: categories[6].id, isPrimary: true }, { categoryId: categories[5].id, isPrimary: false }]
+      },
+      countries: {
+        create: []
+      }
+    }
+  });
+
+  const platetectonics = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Thuyết kiến tạo mảng',
+      description: 'Lục địa di động và động đất',
+      content: 'Alfred Wegener đề xuất thuyết trôi dạt lục địa (1912), sau này phát triển thành thuyết kiến tạo mảng. Giải thích tại sao lục địa di chuyển, núi lửa phun trào, động đất xảy ra. Các mảng kiến tạo trôi nổi trên lớp magma.',
+      year: 1912,
+      isBc: false,
+      importanceLevel: 5,
+      source: 'Wegener - Continental Drift Theory',
+      categories: {
+        create: [{ categoryId: categories[6].id, isPrimary: true }]
+      },
+      countries: {
+        create: [{ countryId: countries[4].id, isPrimary: true }]
+      }
+    }
+  });
+
+  const mountEverest = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Đo đạc đỉnh Everest',
+      description: 'Điểm cao nhất Trái Đất',
+      content: 'Great Trigonometrical Survey of India xác định đỉnh Everest (8,849m) là điểm cao nhất trên Trái Đất (1856). Tên gọi để vinh danh George Everest, nhà trắc địa trưởng Ấn Độ.',
+      year: 1856,
+      isBc: false,
+      importanceLevel: 4,
+      source: 'Survey of India',
+      categories: {
+        create: [{ categoryId: categories[6].id, isPrimary: true }]
+      },
+      countries: {
+        create: [{ countryId: countries[2].id, isPrimary: true }]
+      }
+    }
+  });
+
+  const amazonRainforest = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Rừng nhiệt đới Amazon',
+      description: 'Lá phổi xanh của Trái Đất',
+      content: 'Rừng Amazon là khu rừng nhiệt đới lớn nhất thế giới (5.5 triệu km²), chứa 10% đa dạng sinh học toàn cầu. Sản xuất 20% oxy Trái Đất, đóng vai trò quan trọng trong điều hòa khí hậu.',
+      year: 1541,
+      isBc: false,
+      approximateDate: true,
+      importanceLevel: 5,
+      source: 'Geographical Studies',
+      categories: {
+        create: [{ categoryId: categories[6].id, isPrimary: true }, { categoryId: categories[3].id, isPrimary: false }]
+      },
+      countries: {
+        create: []
+      }
+    }
+  });
+
+  const gps = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Hệ thống GPS',
+      description: 'Định vị toàn cầu bằng vệ tinh',
+      content: 'Global Positioning System (GPS) của Hoa Kỳ đi vào hoạt động đầy đủ (1995), cho phép xác định vị trí chính xác ở bất kỳ đâu trên Trái Đất. Cách mạng hóa địa lý, giao thông, quân sự, và cuộc sống hàng ngày.',
+      year: 1995,
+      isBc: false,
+      importanceLevel: 5,
+      source: 'US Department of Defense',
+      categories: {
+        create: [{ categoryId: categories[6].id, isPrimary: true }]
+      },
+      countries: {
+        create: []
+      }
+    }
+  });
+
+  const climateChange = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Biến đổi khí hậu toàn cầu',
+      description: 'Trái Đất đang nóng lên',
+      content: 'IPCC (Intergovernmental Panel on Climate Change) cảnh báo Trái Đất nóng lên do khí nhà kính từ hoạt động con người. Băng tan, mực nước biển dâng, thời tiết cực đoan. Thách thức lớn nhất thế kỷ 21.',
+      year: 1988,
+      isBc: false,
+      importanceLevel: 5,
+      source: 'IPCC Reports',
+      categories: {
+        create: [{ categoryId: categories[6].id, isPrimary: true }]
+      },
+      countries: {
+        create: []
+      }
+    }
+  });
+
+  const googleEarth = await prisma.knowledgeEntry.create({
+    data: {
+      title: 'Google Earth',
+      description: 'Toàn bộ Trái Đất trong tầm tay',
+      content: 'Google Earth (2005) cho phép mọi người khám phá Trái Đất qua ảnh vệ tinh 3D. Dân chủ hóa việc tiếp cận thông tin địa lý, thay đổi cách chúng ta học và hiểu về thế giới.',
+      year: 2005,
+      isBc: false,
+      importanceLevel: 4,
+      source: 'Google Inc.',
+      categories: {
+        create: [{ categoryId: categories[6].id, isPrimary: true }]
+      },
+      countries: {
+        create: []
+      }
+    }
+  });
+
   // ============ PHILOSOPHY KNOWLEDGE ============
 
   const socrates = await prisma.knowledgeEntry.create({
@@ -1630,11 +1815,84 @@ async function main() {
     }
   });
 
+  // Geography Relationships
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: earthShape.id,
+      targetId: euclidGeometry.id,
+      relationshipType: 'builds_upon',
+      description: 'Đo chu vi Trái Đất dựa trên hình học Euclid'
+    }
+  });
+
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: magellanCircumnavigation.id,
+      targetId: earthShape.id,
+      relationshipType: 'builds_upon',
+      description: 'Vòng quanh thế giới chứng thực lý thuyết Trái Đất hình cầu'
+    }
+  });
+
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: colombusAmerica.id,
+      targetId: renaissance.id,
+      relationshipType: 'influences',
+      description: 'Thời kỳ Phục Hưng thúc đẩy các cuộc khám phá địa lý'
+    }
+  });
+
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: silkRoad.id,
+      targetId: islamicGoldenAge.id,
+      relationshipType: 'related_to',
+      description: 'Con đường tơ lụa truyền bá tri thức Hồi giáo'
+    }
+  });
+
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: amazonRainforest.id,
+      targetId: evolution.id,
+      relationshipType: 'related_to',
+      description: 'Đa dạng sinh học Amazon minh họa thuyết tiến hóa'
+    }
+  });
+
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: climateChange.id,
+      targetId: amazonRainforest.id,
+      relationshipType: 'related_to',
+      description: 'Phá rừng Amazon góp phần vào biến đổi khí hậu'
+    }
+  });
+
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: gps.id,
+      targetId: einstein.id,
+      relationshipType: 'builds_upon',
+      description: 'GPS sử dụng thuyết tương đối để hiệu chỉnh thời gian vệ tinh'
+    }
+  });
+
+  await prisma.knowledgeRelationship.create({
+    data: {
+      sourceId: googleEarth.id,
+      targetId: gps.id,
+      relationshipType: 'builds_upon',
+      description: 'Google Earth sử dụng dữ liệu GPS và vệ tinh'
+    }
+  });
+
   console.log('✅ Seeding completed!');
   console.log(`Created ${categories.length} categories`);
   console.log(`Created ${countries.length} countries`);
-  console.log(`Created 64 knowledge entries (14 Math + 10 Physics + 10 Chemistry + 10 Biology + 10 History + 10 Philosophy)`);
-  console.log(`Created 41 relationships`);
+  console.log(`Created 74 knowledge entries (14 Math + 10 Physics + 10 Chemistry + 10 Biology + 10 History + 10 Philosophy + 10 Geography)`);
+  console.log(`Created 49 relationships`);
 }
 
 main()
